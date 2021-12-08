@@ -1,12 +1,13 @@
-import { createStore } from 'vuex'
+import { createStore } from 'vuex';
+
+import history from './modules/history';
+import payoff from './modules/payoff';
+import price from './modules/price';
 
 export default createStore({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
   modules: {
+    history,
+    payoff,
+    price
   }
 })
