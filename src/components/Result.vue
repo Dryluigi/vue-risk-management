@@ -1,20 +1,14 @@
 <template>
-  <table class="border-collapse border min-w-0 overflow-x-scroll text-center">
+  <table
+    class="border-collapse border min-w-0 overflow-x-scroll text-center my-4"
+  >
     <thead>
       <tr>
-        <th
-          class="px-4"
-          colspan="2"
-        >
-          Expected Returns
-        </th>
+        <th class="px-4" colspan="2">Expected Returns</th>
       </tr>
     </thead>
     <tbody>
-      <tr
-        v-for="er in expectedReturns"
-        :key="er.label"
-      >
+      <tr v-for="er in expectedReturns" :key="er.label">
         <td class="border">
           {{ er.label }}
         </td>
@@ -24,6 +18,7 @@
       </tr>
     </tbody>
   </table>
+  <p>Hasil optimal adalah {{ expectedReturns.find((er) => er.max).demand }}</p>
 </template>
 
 <script>
@@ -38,12 +33,12 @@ export default {
       for (let i = 0; i < payoff.length; i++) {
         const label = "ER" + demands[i].demand;
         let value = 0;
-        
+
         for (let j = 0; j < payoff[i].length; j++) {
           value += payoff[i][j] * demands[j].probability;
         }
 
-        ers.push({ label, value });
+        ers.push({ label, value, demand: demands[i].demand });
       }
 
       const max = ers.reduce((prev, er) => {
@@ -54,20 +49,20 @@ export default {
 
       console.log(max);
 
-      const ersWithMaxFlag = ers.map(er => {
+      const ersWithMaxFlag = ers.map((er) => {
         if (er.value === max) {
           return {
             ...er,
             max: true,
-          }
+          };
         }
 
         return er;
       });
 
       return ersWithMaxFlag;
-    }
-  }
+    },
+  },
 };
 </script>
 

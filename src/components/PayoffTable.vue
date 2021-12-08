@@ -2,7 +2,7 @@
   <h2 class="text-center font-semibold">
     Tabel Payoff
   </h2>
-  <table class="border-collapse border min-w-0 overflow-x-scroll">
+  <table class="border-collapse border min-w-0 overflow-x-scroll my-4">
     <tbody>
       <tr>
         <td
